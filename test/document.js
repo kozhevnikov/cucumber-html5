@@ -1,4 +1,5 @@
 const { describe, it } = require('mocha');
+const { load } = require('cheerio');
 const lint = require('html5-lint');
 require('should');
 
@@ -13,7 +14,12 @@ describe('Document', () => {
     });
   });
 
-  it('should log doctype', () => {
+  it('should have doctype', () => {
     exec('features/feature.feature').should.startWith('<!DOCTYPE html>');
+  });
+
+  it('should have title', () => {
+    const $ = load(exec('features/feature.feature'));
+    $('title').text().should.equal('Cucumber Report');
   });
 });
