@@ -22,4 +22,13 @@ describe('Document', () => {
     const $ = load(exec('features/feature.feature'));
     $('title').text().should.equal('Cucumber Report');
   });
+
+  it('should have custom title', () => {
+    const $ = load(exec('features/feature.feature', '--format-options', JSON.stringify({
+      html: {
+        title: 'Custom Title'
+      }
+    })));
+    $('title').text().should.equal('Custom Title');
+  });
 });

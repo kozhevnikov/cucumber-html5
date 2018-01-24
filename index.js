@@ -2,16 +2,20 @@ const { Formatter } = require('cucumber');
 const { render } = require('mustache');
 const { readFileSync } = require('fs');
 
-class PrettyFormatter extends Formatter {
+class HtmlFormatter extends Formatter {
   constructor(options) {
     super(options);
 
     options.eventBroadcaster.on('test-run-finished', () => {
-      const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');
-      const html = render(template);
+      const html = HtmlFormatter.render(options.html);
       this.log(html);
     });
   }
+
+  static render(options = {}) {
+    const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');
+    return render(template, options);
+  }
 }
 
-module.exports = PrettyFormatter;
+module.exports = HtmlFormatter;
