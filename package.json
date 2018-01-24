@@ -13,6 +13,9 @@
     "lint": "eslint .",
     "test": "mocha"
   },
+  "dependencies": {
+    "cucumber": "^3.2.1"
+  },
   "devDependencies": {
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
