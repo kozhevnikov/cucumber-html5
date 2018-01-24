@@ -1,0 +1,12 @@
+{
+  "name": "cucumber-html5",
+  "version": "1.0.0",
+  "description": "Cucumber.js HTML Formatter",
+  "main": "index.js",
+  "repository": "https://github.com/kozhevnikov/cucumber-html5",
+  "author": "Ilya Kozhevnikov <git@kozhevnikov.com>",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ]
+}
