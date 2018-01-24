@@ -24,6 +24,9 @@
     "should": "^13.2.1"
   },
   "eslintConfig": {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+      "comma-dangle": "off"
+    }
   }
 }
