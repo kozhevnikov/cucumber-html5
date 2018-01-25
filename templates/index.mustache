@@ -6,6 +6,12 @@
     <style type="text/css">
       .feature {
         border: 1px solid red;
+        margin: 5px;
+      }
+
+      .scenario {
+        border: 1px solid green;
+        margin: 5px;
       }
 
       .description {
@@ -21,6 +27,11 @@
             <h1 class="name">{{name}}</h1>
             <p class="description">{{description}}</p>
           </header>
+          {{#scenarios}}
+            <article class="scenario">
+              <h2 class="name">{{name}}</h2>
+            </article>
+          {{/scenarios}}
         </section>
       {{/features}}
     </main>

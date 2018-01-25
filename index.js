@@ -30,7 +30,10 @@ class HtmlFormatter extends Formatter {
 
     view.features = view.json.map(feature => ({
       name: feature.name,
-      description: feature.description
+      description: feature.description,
+      scenarios: feature.elements.map(element => ({
+        name: element.name
+      }))
     }));
 
     const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');

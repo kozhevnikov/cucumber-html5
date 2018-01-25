@@ -14,7 +14,6 @@ describe('Feature', () => {
 
   it('should have description', () => {
     const $ = load('features/description.feature');
-    console.log($.html())
     $('section > header > p').text().should.equal(
       '  As a\n' +
       '  I want\n' +
