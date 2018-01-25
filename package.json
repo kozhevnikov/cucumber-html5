@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha"
+    "test": "mocha",
+    "cuke": "cucumber-js -f ."
   },
   "dependencies": {
     "cucumber": ">=3.0.0",
@@ -30,7 +31,8 @@
   "eslintConfig": {
     "extends": "airbnb-base",
     "rules": {
-      "comma-dangle": "off"
+      "comma-dangle": "off",
+      "function-paren-newline": "off"
     }
   }
 }

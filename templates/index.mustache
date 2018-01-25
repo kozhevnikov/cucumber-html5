@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <style type="text/css">
+      .feature {
+        border: 1px solid red;
+      }
+
+      .description {
+        white-space: pre;
+      }
+    </style>
   </head>
   <body>
     <main>
       {{#features}}
-        <section>
+        <section class="feature">
           <header>
-            <h1>{{name}}</h1>
+            <h1 class="name">{{name}}</h1>
+            <p class="description">{{description}}</p>
           </header>
         </section>
       {{/features}}
