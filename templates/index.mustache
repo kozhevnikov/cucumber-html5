@@ -2,8 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>{{title}}{{^title}}Cucumber Report{{/title}}</title>
+    <title>{{title}}</title>
   </head>
   <body>
+    <main>
+      {{#features}}
+        <section>
+          <header>
+            <h1>{{name}}</h1>
+          </header>
+        </section>
+      {{/features}}
+    </main>
   </body>
 </html>

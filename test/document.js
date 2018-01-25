@@ -1,9 +1,8 @@
 const { describe, it } = require('mocha');
-const { load } = require('cheerio');
 const lint = require('html5-lint');
 require('should');
 
-const exec = require('./exec');
+const { exec, load } = require('./exec');
 
 describe('Document', () => {
   it('should be valid', (done) => {
@@ -19,16 +18,16 @@ describe('Document', () => {
   });
 
   it('should have title', () => {
-    const $ = load(exec('features/feature.feature'));
+    const $ = load('features/feature.feature');
     $('title').text().should.equal('Cucumber Report');
   });
 
   it('should have custom title', () => {
-    const $ = load(exec('features/feature.feature', '--format-options', JSON.stringify({
+    const $ = load('features/feature.feature', '--format-options', JSON.stringify({
       html: {
         title: 'Custom Title'
       }
-    })));
+    }));
     $('title').text().should.equal('Custom Title');
   });
 });

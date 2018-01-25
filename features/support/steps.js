@@ -1,5 +1,3 @@
-const { defineSupportCode } = require('cucumber');
+const { defineStep } = require('cucumber');
 
-defineSupportCode(({ defineStep }) => {
-  defineStep('noop', () => {});
-});
+defineStep('noop', () => {});
