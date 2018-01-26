@@ -7,8 +7,8 @@ describe('Feature', () => {
   it('should have name', () => {
     const $ = load('features/', '--name', 'Feature ?\\d*');
     $('main > section > header > h1').texts().should.eql([
-      'Feature',
-      'Feature 2'
+      'Feature: Feature',
+      'Feature: Feature 2'
     ]);
   });
 

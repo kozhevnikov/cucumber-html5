@@ -9,18 +9,18 @@
       {{#features}}
         <section>
           <header>
-            <h1>{{name}}</h1>
+            <h1>{{keyword}}: {{name}}</h1>
             <p>{{description}}</p>
           </header>
           {{#scenarios}}
             <article>
               <header>
-                <h2>{{name}}</h2>
+                <h2>{{keyword}}: {{name}}</h2>
                 <p>{{description}}</p>
               </header>
               <ol>
                 {{#steps}}
-                  <li>{{name}}</li>
+                  <li>{{keyword}} {{name}}</li>
                 {{/steps}}
               </ol>
             </article>

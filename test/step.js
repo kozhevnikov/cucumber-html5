@@ -7,11 +7,11 @@ describe('Step', () => {
   it('should have name', () => {
     const $ = load('features/step.feature');
     $('article > ol > li').texts().should.eql([
-      'noop',
-      'noop',
-      'noop',
-      'noop',
-      'noop',
+      'Given noop',
+      'When noop',
+      'Then noop',
+      'And noop',
+      'But noop',
     ]);
   });
 });

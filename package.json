@@ -16,7 +16,7 @@
     "cuke": "cucumber-js -f ."
   },
   "dependencies": {
-    "cucumber": ">=3.0.0",
+    "cucumber": "^4.0.0",
     "mustache": "^2.3.0"
   },
   "devDependencies": {
