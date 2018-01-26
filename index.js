@@ -44,6 +44,7 @@ class HtmlFormatter extends Formatter {
             if (s.arguments) {
               s.arguments.forEach((a) => {
                 if (a.content) step.docstring = a.content;
+                if (a.rows) step.datatable = a;
               });
             }
 
