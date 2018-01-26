@@ -3,33 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
-    <style type="text/css">
-      .feature {
-        border: 1px solid red;
-        margin: 5px;
-      }
-
-      .scenario {
-        border: 1px solid green;
-        margin: 5px;
-      }
-
-      .description {
-        white-space: pre;
-      }
-    </style>
   </head>
   <body>
     <main>
       {{#features}}
-        <section class="feature">
+        <section>
           <header>
-            <h1 class="name">{{name}}</h1>
-            <p class="description">{{description}}</p>
+            <h1>{{name}}</h1>
+            <p>{{description}}</p>
           </header>
           {{#scenarios}}
-            <article class="scenario">
-              <h2 class="name">{{name}}</h2>
+            <article>
+              <header>
+                <h2>{{name}}</h2>
+                <p>{{description}}</p>
+              </header>
             </article>
           {{/scenarios}}
         </section>

@@ -1,6 +1,12 @@
 const { execFileSync } = require('child_process');
 const cheerio = require('cheerio');
 
+cheerio.prototype.texts = function texts() {
+  return this.map(function text() {
+    return cheerio(this).text();
+  }).toArray();
+};
+
 exports.exec = (...args) => execFileSync('node_modules/cucumber/bin/cucumber-js', [
   ...args,
   '--format', '.',
@@ -8,9 +14,3 @@ exports.exec = (...args) => execFileSync('node_modules/cucumber/bin/cucumber-js'
 ]).toString();
 
 exports.load = (...args) => cheerio.load(exports.exec(...args));
-
-cheerio.prototype.texts = function texts() {
-  return this.map(function text() {
-    return cheerio(this).text();
-  }).toArray();
-};

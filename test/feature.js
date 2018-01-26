@@ -14,9 +14,10 @@ describe('Feature', () => {
 
   it('should have description', () => {
     const $ = load('features/description.feature');
-    $('section > header > p').text().should.equal(
+    $('main > section > header > p').text().should.equal(
       '  As a\n' +
       '  I want\n' +
-      '  So that');
+      '  So that'
+    );
   });
 });

@@ -23,18 +23,19 @@ class HtmlFormatter extends Formatter {
   }
 
   static render(options) {
+    const json = options.json || [];
+
     const view = {
       title: options.title || 'Cucumber Report',
-      json: options.json || []
-    };
-
-    view.features = view.json.map(feature => ({
-      name: feature.name,
-      description: feature.description,
-      scenarios: feature.elements.map(element => ({
-        name: element.name
+      features: json.map(feature => ({
+        name: feature.name,
+        description: feature.description,
+        scenarios: feature.elements.map(element => ({
+          name: element.name,
+          description: element.description
+        }))
       }))
-    }));
+    };
 
     const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');
     return render(template, view);
