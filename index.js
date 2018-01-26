@@ -1,6 +1,7 @@
 const { Formatter, JsonFormatter } = require('cucumber');
 const { render } = require('mustache');
 const { readFileSync } = require('fs');
+const pretty = require('pretty');
 
 class HtmlFormatter extends Formatter {
   constructor(options) {
@@ -55,7 +56,8 @@ class HtmlFormatter extends Formatter {
     };
 
     const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');
-    return render(template, view);
+    const html = render(template, view);
+    return pretty(html, { ocd: true });
   }
 }
 
