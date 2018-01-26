@@ -18,6 +18,11 @@
                 <h2>{{name}}</h2>
                 <p>{{description}}</p>
               </header>
+              <ol>
+                {{#steps}}
+                  <li>{{name}}</li>
+                {{/steps}}
+              </ol>
             </article>
           {{/scenarios}}
         </section>

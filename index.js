@@ -32,7 +32,10 @@ class HtmlFormatter extends Formatter {
         description: feature.description,
         scenarios: feature.elements.map(element => ({
           name: element.name,
-          description: element.description
+          description: element.description,
+          steps: element.steps.map(step => ({
+            name: step.name
+          }))
         }))
       }))
     };
