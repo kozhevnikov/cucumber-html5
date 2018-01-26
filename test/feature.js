@@ -6,7 +6,7 @@ const { load } = require('./exec');
 describe('Feature', () => {
   it('should have name', () => {
     const $ = load('features/', '--name', 'Feature ?\\d*');
-    $('main > section > header > h1').texts().should.eql([
+    $('main > article > h1').texts().should.eql([
       'Feature: Feature',
       'Feature: Feature 2'
     ]);
@@ -14,7 +14,7 @@ describe('Feature', () => {
 
   it('should have description', () => {
     const $ = load('features/description.feature');
-    $('main > section > header > p').text().should.equal(
+    $('main > article > pre').text().should.equal(
       '  As a\n' +
       '  I want\n' +
       '  So that'

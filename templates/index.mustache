@@ -7,25 +7,28 @@
   <body>
     <main>
       {{#features}}
-        <section>
-          <header>
-            <h1>{{keyword}}: {{name}}</h1>
-            <p>{{description}}</p>
-          </header>
+        <article>
+          <h1>{{keyword}}: {{name}}</h1>
+          {{#description}}
+            <pre>{{description}}</pre>
+          {{/description}}
           {{#scenarios}}
-            <article>
-              <header>
-                <h2>{{keyword}}: {{name}}</h2>
-                <p>{{description}}</p>
-              </header>
-              <ol>
-                {{#steps}}
-                  <li>{{keyword}} {{name}}</li>
-                {{/steps}}
-              </ol>
-            </article>
+            <section>
+              <h2>{{keyword}}: {{name}}</h2>
+              {{#description}}
+                <pre>{{description}}</pre>
+              {{/description}}
+              {{#steps}}
+                <section>
+                  <h3>{{keyword}} {{name}}</h3>
+                  {{#docstring}}
+                    <pre>{{docstring}}</pre>
+                  {{/docstring}}
+                </section>
+              {{/steps}}
+            </section>
           {{/scenarios}}
-        </section>
+        </article>
       {{/features}}
     </main>
   </body>

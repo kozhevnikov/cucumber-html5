@@ -27,18 +27,28 @@ class HtmlFormatter extends Formatter {
 
     const view = {
       title: options.title || 'Cucumber Report',
-      features: json.map(feature => ({
-        keyword: feature.keyword,
-        name: feature.name,
-        description: feature.description,
-        scenarios: feature.elements.map(element => ({
-          keyword: element.keyword,
-          name: element.name,
-          description: element.description,
-          steps: element.steps.map(step => ({
-            keyword: step.keyword.trim(),
-            name: step.name
-          }))
+      features: json.map(f => ({
+        keyword: f.keyword,
+        name: f.name,
+        description: f.description,
+        scenarios: f.elements.map(e => ({
+          keyword: e.keyword,
+          name: e.name,
+          description: e.description,
+          steps: e.steps.map((s) => {
+            const step = {
+              keyword: s.keyword.trim(),
+              name: s.name,
+            };
+
+            if (s.arguments) {
+              s.arguments.forEach((a) => {
+                if (a.content) step.docstring = a.content;
+              });
+            }
+
+            return step;
+          })
         }))
       }))
     };
