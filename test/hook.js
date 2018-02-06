@@ -6,7 +6,7 @@ const { load } = require('./exec');
 describe('Hook', () => {
   it('should have before and after', () => {
     const $ = load('features/hook.feature');
-    $('article > section > section > h3').texts().should.eql([
+    $('.step-name').texts().should.eql([
       'Before ',
       'When noop',
       'Then noop',

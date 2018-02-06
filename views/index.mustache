@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <main class="features">
+      {{#features}}
+        <article class="feature">
+          <h1 class="feature-name">{{keyword}}: {{name}}</h1>
+
+          {{#description}}
+            <pre class="feature-description">{{description}}</pre>
+          {{/description}}
+
+          {{#scenarios}}
+            <section class="scenario">
+              <h2 class="scenario-name">{{keyword}}: {{name}}</h2>
+
+              {{#description}}
+                <pre class="scenario-description">{{description}}</pre>
+              {{/description}}
+
+              {{#steps}}
+                <section class="step">
+                  <h3 class="step-name">{{keyword}} {{name}}</h3>
+
+                  {{#doc_string}}
+                    <pre class="doc-string">{{doc_string}}</pre>
+                  {{/doc_string}}
+
+                  {{#data_table.length}}
+                    <table class="data-table">
+                      {{#data_table}}
+                        <tr>
+                          {{#.}}
+                            <td>{{.}}</td>
+                          {{/.}}
+                        </tr>
+                      {{/data_table}}
+                    </table>
+                  {{/data_table.length}}
+
+                </section>
+              {{/steps}}
+
+            </section>
+          {{/scenarios}}
+
+        </article>
+      {{/features}}
+    </main>
+  </body>
+</html>

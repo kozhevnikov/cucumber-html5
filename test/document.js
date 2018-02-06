@@ -17,7 +17,7 @@ describe('Document', () => {
     exec('features/feature.feature').should.startWith('<!DOCTYPE html>');
   });
 
-  it('should have title', () => {
+  it('should have default title', () => {
     const $ = load('features/feature.feature');
     $('title').text().should.equal('Cucumber Report');
   });

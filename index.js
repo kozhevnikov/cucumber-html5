@@ -6,10 +6,9 @@ const pretty = require('pretty');
 class HtmlFormatter extends Formatter {
   constructor(options) {
     super(options);
-
-    const view = options.html || {};
-
     options.eventBroadcaster.on('test-run-finished', () => {
+      const view = options.html || {};
+
       const noptions = Object.create(options, {
         eventBroadcaster: { value: { on: () => {} } },
         log: { value: (json) => { view.json = JSON.parse(json); } }
@@ -19,33 +18,36 @@ class HtmlFormatter extends Formatter {
       formatter.onTestRunFinished();
 
       const html = HtmlFormatter.render(view);
-      options.log(html);
+      this.log(html);
     });
   }
 
   static render(options) {
     const json = options.json || [];
 
-    const view = {
+    const data = {
       title: options.title || 'Cucumber Report',
-      features: json.map(f => ({
-        keyword: f.keyword,
-        name: f.name,
-        description: f.description,
-        scenarios: f.elements.map(e => ({
-          keyword: e.keyword,
-          name: e.name,
-          description: e.description,
-          steps: e.steps.map((s) => {
+
+      features: json.map(jsonFeature => ({
+        keyword: jsonFeature.keyword,
+        name: jsonFeature.name,
+        description: jsonFeature.description,
+
+        scenarios: jsonFeature.elements.map(jsonScenario => ({
+          keyword: jsonScenario.keyword,
+          name: jsonScenario.name,
+          description: jsonScenario.description,
+
+          steps: jsonScenario.steps.map((jsonStep) => {
             const step = {
-              keyword: s.keyword.trim(),
-              name: s.name,
+              keyword: jsonStep.keyword.trim(),
+              name: jsonStep.name,
             };
 
-            if (s.arguments) {
-              s.arguments.forEach((a) => {
-                if (a.content) step.docstring = a.content;
-                if (a.rows) step.datatable = a;
+            if (jsonStep.arguments) {
+              jsonStep.arguments.forEach((jsonArgument) => {
+                if (jsonArgument.content) step.doc_string = jsonArgument.content;
+                if (jsonArgument.rows) step.data_table = jsonArgument.rows.map(row => row.cells);
               });
             }
 
@@ -55,8 +57,8 @@ class HtmlFormatter extends Formatter {
       }))
     };
 
-    const template = readFileSync(`${__dirname}/templates/index.mustache`, 'utf8');
-    const html = render(template, view);
+    const view = readFileSync(`${__dirname}/views/index.mustache`, 'utf8');
+    const html = render(view, data);
     return pretty(html, { ocd: true });
   }
 }

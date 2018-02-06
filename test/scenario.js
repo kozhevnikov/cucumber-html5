@@ -6,7 +6,7 @@ const { load } = require('./exec');
 describe('Scenario', () => {
   it('should have name', () => {
     const $ = load('features/scenario.feature', '--name', 'Scenario ?\\d*');
-    $('article > section > h2').texts().should.eql([
+    $('.scenario-name').texts().should.eql([
       'Scenario: Scenario',
       'Scenario: Scenario 2'
     ]);
@@ -14,7 +14,7 @@ describe('Scenario', () => {
 
   it('should have description', () => {
     const $ = load('features/description.feature');
-    $('article > section > pre').texts().should.eql([
+    $('.scenario-description').texts().should.eql([
       '  Description of scenario',
       '  Description of scenario outline',
       '  Description of scenario outline'

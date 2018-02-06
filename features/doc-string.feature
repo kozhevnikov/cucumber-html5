@@ -1,7 +1,7 @@
-Feature: Docstring
+Feature: Doc String
 
-  Scenario: Docstring
-    When docstring
+  Scenario: Doc String
+    When noop args
       """
       Lorem ipsum
       dolor sit amet
